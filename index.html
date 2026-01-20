@@ -409,11 +409,68 @@
                 right: 20px;
             }
         }
+
+        /* Music Toggle Button Top */
+        .music-toggle-top {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 12px 20px;
+            border-radius: 25px;
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid #ff0000;
+            color: #ff0000;
+            font-size: 1.2rem;
+            font-family: 'Orbitron', monospace;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow:
+                0 0 15px rgba(255, 0, 0, 0.5),
+                0 0 30px rgba(255, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .music-toggle-top:hover {
+            background: rgba(255, 0, 0, 0.1);
+            transform: scale(1.05);
+            box-shadow:
+                0 0 20px rgba(255, 0, 0, 0.8),
+                0 0 40px rgba(255, 0, 0, 0.5);
+        }
+
+        .music-toggle-top:active {
+            transform: scale(0.98);
+        }
+
+        .music-text {
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 768px) {
+            .music-toggle-top {
+                top: 15px;
+                right: 15px;
+                padding: 10px 16px;
+                font-size: 1rem;
+            }
+
+            .music-text {
+                font-size: 0.8rem;
+            }
+        }
     </style>
 </head>
 
 <body>
     <div class="container">
+        <!-- Music Toggle Button Top -->
+        <button id="musicToggleTop" class="music-toggle-top" title="Włącz/Wyłącz muzykę">
+            <span class="music-icon-top">🔇</span> <span class="music-text">Muzyka</span>
+        </button>
+
         <div class="animals">
             <img src="cat.png" alt="Drapieżny Kocur" class="animal-img cat" id="catImg">
             <img src="mouse.png" alt="Wystraszanona Myszka" class="animal-img mouse" id="mouseImg">
@@ -492,14 +549,16 @@
 
         // Music Control
         const musicToggle = document.getElementById('musicToggle');
+        const musicToggleTop = document.getElementById('musicToggleTop');
         const bgMusic = document.getElementById('bgMusic');
         let isMusicPlaying = false;
 
-        musicToggle.addEventListener('click', () => {
+        function toggleMusic() {
             if (isMusicPlaying) {
                 bgMusic.pause();
                 musicToggle.classList.add('muted');
                 musicToggle.querySelector('.music-icon').textContent = '🔇';
+                musicToggleTop.querySelector('.music-icon-top').textContent = '🔇';
                 isMusicPlaying = false;
             } else {
                 bgMusic.play().catch(e => {
@@ -507,9 +566,13 @@
                 });
                 musicToggle.classList.remove('muted');
                 musicToggle.querySelector('.music-icon').textContent = '🔊';
+                musicToggleTop.querySelector('.music-icon-top').textContent = '🔊';
                 isMusicPlaying = true;
             }
-        });
+        }
+
+        musicToggle.addEventListener('click', toggleMusic);
+        musicToggleTop.addEventListener('click', toggleMusic);
 
         // Set initial volume
         bgMusic.volume = 0.3;
