@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Odliczanie do pokuty 21 stycznia 2026">
+    <title>ODLICZAJ DO POKUTY</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Orbitron:wght@400;700;900&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Orbitron', monospace;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: #050505;
+            background-image: radial-gradient(ellipse at center, rgba(139, 0, 0, 0.4) 0%, #050505 70%);
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Dark pulsing background effect */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(220, 20, 60, 0.15) 0%, transparent 50%);
+            animation: bloodPulse 4s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes bloodPulse {
+
+            0%,
+            100% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.6;
+                transform: scale(1.05);
+            }
+        }
+
+        .container {
+            text-align: center;
+            padding: 60px 50px;
+            background: rgba(10, 10, 10, 0.7);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            box-shadow:
+                0 0 40px rgba(220, 20, 60, 0.5),
+                0 0 80px rgba(139, 0, 0, 0.3),
+                inset 0 0 60px rgba(0, 0, 0, 0.5);
+            border: 2px solid rgba(220, 20, 60, 0.6);
+            max-width: 900px;
+            width: 90%;
+            position: relative;
+            z-index: 1;
+            animation: containerGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes containerGlow {
+
+            0%,
+            100% {
+                box-shadow:
+                    0 0 40px rgba(220, 20, 60, 0.5),
+                    0 0 80px rgba(139, 0, 0, 0.3),
+                    inset 0 0 60px rgba(0, 0, 0, 0.5);
+            }
+
+            50% {
+                box-shadow:
+                    0 0 60px rgba(220, 20, 60, 0.8),
+                    0 0 120px rgba(139, 0, 0, 0.5),
+                    inset 0 0 60px rgba(0, 0, 0, 0.5);
+            }
+        }
+
+        .animals {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 80px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .animal-img {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid rgba(220, 20, 60, 0.5);
+            box-shadow: 0 0 30px rgba(220, 20, 60, 0.6);
+        }
+
+        .animal-img.cat {
+            animation: breathing 3s ease-in-out infinite;
+        }
+
+        .animal-img.mouse {
+            animation: tremble 0.1s infinite;
+        }
+
+        /* Slow, menacing breathing for the cat */
+        @keyframes breathing {
+
+            0%,
+            100% {
+                transform: scale(1);
+                filter: brightness(1) drop-shadow(0 0 20px rgba(255, 140, 0, 0.6));
+            }
+
+            50% {
+                transform: scale(1.08);
+                filter: brightness(1.2) drop-shadow(0 0 35px rgba(255, 140, 0, 0.9));
+            }
+        }
+
+        /* Rapid trembling/shivering for the mouse */
+        @keyframes tremble {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            10% {
+                transform: translate(-2px, -1px) rotate(-1deg);
+            }
+
+            20% {
+                transform: translate(2px, 1px) rotate(1deg);
+            }
+
+            30% {
+                transform: translate(-1px, 2px) rotate(0deg);
+            }
+
+            40% {
+                transform: translate(1px, -2px) rotate(1deg);
+            }
+
+            50% {
+                transform: translate(-2px, 1px) rotate(-1deg);
+            }
+
+            60% {
+                transform: translate(2px, -1px) rotate(0deg);
+            }
+
+            70% {
+                transform: translate(-1px, -2px) rotate(-1deg);
+            }
+
+            80% {
+                transform: translate(1px, 2px) rotate(1deg);
+            }
+
+            90% {
+                transform: translate(-2px, -1px) rotate(0deg);
+            }
+
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            color: #ff0000;
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            text-shadow:
+                0 0 10px rgba(255, 0, 0, 0.8),
+                0 0 20px rgba(255, 0, 0, 0.6),
+                0 0 30px rgba(139, 0, 0, 0.4);
+            letter-spacing: 3px;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-family: 'Playfair Display', serif;
+            color: #ffcccc;
+            font-size: 1.3rem;
+            font-weight: 400;
+            margin-bottom: 50px;
+            line-height: 1.6;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+        }
+
+        .time-unit {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            border-radius: 15px;
+            padding: 30px 40px;
+            min-width: 150px;
+            border: 3px solid #ff0000;
+            box-shadow:
+                0 0 20px rgba(255, 0, 0, 0.7),
+                0 0 40px rgba(255, 0, 0, 0.4),
+                inset 0 0 20px rgba(255, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .time-unit:hover {
+            transform: translateY(-8px);
+            box-shadow:
+                0 0 30px rgba(255, 0, 0, 1),
+                0 0 60px rgba(255, 0, 0, 0.6),
+                inset 0 0 30px rgba(255, 0, 0, 0.3);
+        }
+
+        .time-value {
+            font-family: 'Orbitron', monospace;
+            font-size: 4.5rem;
+            font-weight: 900;
+            color: #ff0000;
+            display: block;
+            text-shadow:
+                0 0 10px rgba(255, 0, 0, 1),
+                0 0 20px rgba(255, 0, 0, 0.8),
+                0 0 30px rgba(255, 0, 0, 0.6);
+            line-height: 1;
+            letter-spacing: 3px;
+        }
+
+        .time-label {
+            font-family: 'Orbitron', monospace;
+            font-size: 0.9rem;
+            color: #ffcccc;
+            margin-top: 15px;
+            display: block;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+        }
+
+        .footer {
+            margin-top: 30px;
+            color: #ff0000;
+            font-size: 1.4rem;
+            font-style: italic;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            text-shadow:
+                0 0 10px rgba(255, 0, 0, 0.8),
+                0 0 20px rgba(255, 0, 0, 0.6);
+            animation: footerPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes footerPulse {
+
+            0%,
+            100% {
+                opacity: 0.8;
+                text-shadow:
+                    0 0 10px rgba(255, 0, 0, 0.8),
+                    0 0 20px rgba(255, 0, 0, 0.6);
+            }
+
+            50% {
+                opacity: 1;
+                text-shadow:
+                    0 0 15px rgba(255, 0, 0, 1),
+                    0 0 30px rgba(255, 0, 0, 0.8);
+            }
+        }
+
+        .finished {
+            font-size: 3.5rem;
+            color: #ff0000;
+            font-weight: 900;
+            text-shadow:
+                0 0 20px rgba(255, 0, 0, 1),
+                0 0 40px rgba(255, 0, 0, 0.8);
+            animation: celebrate 1s infinite;
+        }
+
+        @keyframes celebrate {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .animal-img {
+                width: 120px;
+                height: 120px;
+            }
+
+            .animals {
+                gap: 40px;
+            }
+
+            .time-unit {
+                min-width: 110px;
+                padding: 25px 30px;
+            }
+
+            .time-value {
+                font-size: 3rem;
+            }
+
+            .time-label {
+                font-size: 0.8rem;
+            }
+
+            .container {
+                padding: 40px 30px;
+            }
+
+            .countdown {
+                gap: 20px;
+            }
+
+            .footer {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="animals">
+            <img src="cat.png" alt="Drapieżny Kocur" class="animal-img cat" id="catImg">
+            <img src="mouse.png" alt="Wystraszanona Myszka" class="animal-img mouse" id="mouseImg">
+        </div>
+
+        <h1>ODLICZAJ DO POKUTY</h1>
+
+        <p class="subtitle">
+            Myszko, szykuj pupę. Kocur wraca po swoje bez litości.
+        </p>
+
+        <div id="countdown" class="countdown">
+            <div class="time-unit">
+                <span id="hours" class="time-value">00</span>
+                <span class="time-label">Godzin</span>
+            </div>
+            <div class="time-unit">
+                <span id="minutes" class="time-value">00</span>
+                <span class="time-label">Minut</span>
+            </div>
+            <div class="time-unit">
+                <span id="seconds" class="time-value">00</span>
+                <span class="time-label">Sekund</span>
+            </div>
+        </div>
+
+        <div class="footer">
+            W środę o 16:00 Twój świat przestaje istnieć. 😈🔥
+        </div>
+    </div>
+
+    <script>
+        // Target date: January 21, 2026 at 16:00 (4:00 PM)
+        const targetDate = new Date('2026-01-21T16:00:00').getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance < 0) {
+                // Countdown finished
+                document.getElementById('countdown').innerHTML =
+                    '<div class="finished">💀 CZAS POKUTY NADSZEDŁ! 🔥</div>';
+                return;
+            }
+
+            // Calculate hours, minutes and seconds
+            const hours = Math.floor(distance / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Update the display
+            document.getElementById('hours').textContent =
+                String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent =
+                String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent =
+                String(seconds).padStart(2, '0');
+        }
+
+        // Update countdown immediately
+        updateCountdown();
+
+        // Update countdown every second
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+
+</html>
