@@ -360,116 +360,11 @@
                 font-size: 1.1rem;
             }
         }
-
-        /* Music Toggle Button */
-        .music-toggle {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            background: rgba(0, 0, 0, 0.9);
-            border: 3px solid #ff0000;
-            color: #ff0000;
-            font-size: 2rem;
-            cursor: pointer;
-            z-index: 1000;
-            transition: all 0.3s ease;
-            box-shadow:
-                0 0 20px rgba(255, 0, 0, 0.6),
-                0 0 40px rgba(255, 0, 0, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .music-toggle:hover {
-            transform: scale(1.1);
-            box-shadow:
-                0 0 30px rgba(255, 0, 0, 0.9),
-                0 0 60px rgba(255, 0, 0, 0.5);
-        }
-
-        .music-toggle:active {
-            transform: scale(0.95);
-        }
-
-        .music-toggle.muted .music-icon::after {
-            content: '🔇';
-            position: absolute;
-        }
-
-        @media (max-width: 768px) {
-            .music-toggle {
-                width: 60px;
-                height: 60px;
-                font-size: 1.5rem;
-                bottom: 20px;
-                right: 20px;
-            }
-        }
-
-        /* Music Toggle Button Top */
-        .music-toggle-top {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            padding: 12px 20px;
-            border-radius: 25px;
-            background: rgba(0, 0, 0, 0.8);
-            border: 2px solid #ff0000;
-            color: #ff0000;
-            font-size: 1.2rem;
-            font-family: 'Orbitron', monospace;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow:
-                0 0 15px rgba(255, 0, 0, 0.5),
-                0 0 30px rgba(255, 0, 0, 0.3);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .music-toggle-top:hover {
-            background: rgba(255, 0, 0, 0.1);
-            transform: scale(1.05);
-            box-shadow:
-                0 0 20px rgba(255, 0, 0, 0.8),
-                0 0 40px rgba(255, 0, 0, 0.5);
-        }
-
-        .music-toggle-top:active {
-            transform: scale(0.98);
-        }
-
-        .music-text {
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-        }
-
-        @media (max-width: 768px) {
-            .music-toggle-top {
-                top: 15px;
-                right: 15px;
-                padding: 10px 16px;
-                font-size: 1rem;
-            }
-
-            .music-text {
-                font-size: 0.8rem;
-            }
-        }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <!-- Music Toggle Button Top -->
-        <button id="musicToggleTop" class="music-toggle-top" title="Włącz/Wyłącz muzykę">
-            <span class="music-icon-top">🔇</span> <span class="music-text">Muzyka</span>
-        </button>
 
         <div class="animals">
             <img src="cat.png" alt="Drapieżny Kocur" class="animal-img cat" id="catImg">
@@ -502,15 +397,6 @@
         </div>
     </div>
 
-    <!-- Music Toggle Button -->
-    <button id="musicToggle" class="music-toggle" title="Włącz/Wyłącz muzykę">
-        <span class="music-icon">🔊</span>
-    </button>
-
-    <!-- Background Audio -->
-    <audio id="bgMusic" loop>
-        <source src="https://assets.mixkit.co/active_storage/sfx/2489/2489-preview.mp3" type="audio/mpeg">
-    </audio>
 
     <script>
         // Target date: January 21, 2026 at 16:00 (4:00 PM)
@@ -547,35 +433,6 @@
         // Update countdown every second
         setInterval(updateCountdown, 1000);
 
-        // Music Control
-        const musicToggle = document.getElementById('musicToggle');
-        const musicToggleTop = document.getElementById('musicToggleTop');
-        const bgMusic = document.getElementById('bgMusic');
-        let isMusicPlaying = false;
-
-        function toggleMusic() {
-            if (isMusicPlaying) {
-                bgMusic.pause();
-                musicToggle.classList.add('muted');
-                musicToggle.querySelector('.music-icon').textContent = '🔇';
-                musicToggleTop.querySelector('.music-icon-top').textContent = '🔇';
-                isMusicPlaying = false;
-            } else {
-                bgMusic.play().catch(e => {
-                    console.log('Autoplay prevented:', e);
-                });
-                musicToggle.classList.remove('muted');
-                musicToggle.querySelector('.music-icon').textContent = '🔊';
-                musicToggleTop.querySelector('.music-icon-top').textContent = '🔊';
-                isMusicPlaying = true;
-            }
-        }
-
-        musicToggle.addEventListener('click', toggleMusic);
-        musicToggleTop.addEventListener('click', toggleMusic);
-
-        // Set initial volume
-        bgMusic.volume = 0.3;
     </script>
 </body>
 
