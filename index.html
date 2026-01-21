@@ -4,14 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Odliczanie do pokuty 21 stycznia 2026">
-    <title>ODLICZAJ DO POKUTY</title>
+    <meta name="description" content="ODLICZAJ DO NIESPODZIANKI">
+    <title>ODLICZAJ DO NIESPODZIANKI</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Orbitron:wght@400;700;900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Playfair+Display:wght@400;700;900&display=swap"
         rel="stylesheet">
     <style>
+        :root {
+            --neon-red: #ff0000;
+            --deep-red: #8b0000;
+            --glitch-blue: #00ffff;
+            --glitch-green: #00ff00;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -19,34 +26,31 @@
         }
 
         body {
-            font-family: 'Orbitron', monospace;
+            background-color: #000;
+            color: #fff;
+            font-family: 'Playfair Display', serif;
             min-height: 100vh;
+            overflow: hidden;
+            position: relative;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: #050505;
-            background-image: radial-gradient(ellipse at center, rgba(139, 0, 0, 0.4) 0%, #050505 70%);
-            overflow-x: hidden;
-            overflow-y: auto;
-            position: relative;
-            padding: 20px 0;
         }
 
-        /* Dark pulsing background effect */
-        body::before {
-            content: '';
+        /* Heartbeat Pulse Background */
+        .heartbeat-bg {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at 50% 50%, rgba(220, 20, 60, 0.15) 0%, transparent 50%);
-            animation: bloodPulse 4s ease-in-out infinite;
-            pointer-events: none;
+            background: radial-gradient(circle at center, var(--deep-red) 0%, #000 70%);
+            animation: heartbeat 8s ease-in-out infinite;
+            z-index: -3;
         }
 
-        @keyframes bloodPulse {
+        @keyframes heartbeat {
 
             0%,
             100% {
@@ -55,384 +59,581 @@
             }
 
             50% {
-                opacity: 0.6;
-                transform: scale(1.05);
-            }
-        }
-
-        .container {
-            text-align: center;
-            padding: 60px 50px;
-            background: rgba(10, 10, 10, 0.7);
-            backdrop-filter: blur(20px);
-            border-radius: 20px;
-            box-shadow:
-                0 0 40px rgba(220, 20, 60, 0.5),
-                0 0 80px rgba(139, 0, 0, 0.3),
-                inset 0 0 60px rgba(0, 0, 0, 0.5);
-            border: 2px solid rgba(220, 20, 60, 0.6);
-            max-width: 900px;
-            width: 90%;
-            position: relative;
-            z-index: 1;
-            animation: containerGlow 3s ease-in-out infinite;
-        }
-
-        @keyframes containerGlow {
-
-            0%,
-            100% {
-                box-shadow:
-                    0 0 40px rgba(220, 20, 60, 0.5),
-                    0 0 80px rgba(139, 0, 0, 0.3),
-                    inset 0 0 60px rgba(0, 0, 0, 0.5);
-            }
-
-            50% {
-                box-shadow:
-                    0 0 60px rgba(220, 20, 60, 0.8),
-                    0 0 120px rgba(139, 0, 0, 0.5),
-                    inset 0 0 60px rgba(0, 0, 0, 0.5);
-            }
-        }
-
-        .animals {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 80px;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-        }
-
-        .animal-img {
-            width: 180px;
-            height: 180px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 3px solid rgba(220, 20, 60, 0.5);
-            box-shadow: 0 0 30px rgba(220, 20, 60, 0.6);
-        }
-
-        .animal-img.cat {
-            animation: breathing 3s ease-in-out infinite;
-        }
-
-        .animal-img.mouse {
-            animation: tremble 0.1s infinite;
-        }
-
-        /* Slow, menacing breathing for the cat */
-        @keyframes breathing {
-
-            0%,
-            100% {
-                transform: scale(1);
-                filter: brightness(1) drop-shadow(0 0 20px rgba(255, 140, 0, 0.6));
-            }
-
-            50% {
-                transform: scale(1.08);
-                filter: brightness(1.2) drop-shadow(0 0 35px rgba(255, 140, 0, 0.9));
-            }
-        }
-
-        /* Rapid trembling/shivering for the mouse */
-        @keyframes tremble {
-            0% {
-                transform: translate(0, 0) rotate(0deg);
-            }
-
-            10% {
-                transform: translate(-2px, -1px) rotate(-1deg);
-            }
-
-            20% {
-                transform: translate(2px, 1px) rotate(1deg);
-            }
-
-            30% {
-                transform: translate(-1px, 2px) rotate(0deg);
-            }
-
-            40% {
-                transform: translate(1px, -2px) rotate(1deg);
-            }
-
-            50% {
-                transform: translate(-2px, 1px) rotate(-1deg);
-            }
-
-            60% {
-                transform: translate(2px, -1px) rotate(0deg);
-            }
-
-            70% {
-                transform: translate(-1px, -2px) rotate(-1deg);
-            }
-
-            80% {
-                transform: translate(1px, 2px) rotate(1deg);
-            }
-
-            90% {
-                transform: translate(-2px, -1px) rotate(0deg);
-            }
-
-            100% {
-                transform: translate(0, 0) rotate(0deg);
-            }
-        }
-
-        h1 {
-            font-family: 'Playfair Display', serif;
-            color: #ff0000;
-            font-size: 3.5rem;
-            font-weight: 900;
-            margin-bottom: 20px;
-            text-shadow:
-                0 0 10px rgba(255, 0, 0, 0.8),
-                0 0 20px rgba(255, 0, 0, 0.6),
-                0 0 30px rgba(139, 0, 0, 0.4);
-            letter-spacing: 3px;
-            line-height: 1.2;
-        }
-
-        .subtitle {
-            font-family: 'Playfair Display', serif;
-            color: #ffcccc;
-            font-size: 1.3rem;
-            font-weight: 400;
-            margin-bottom: 50px;
-            line-height: 1.6;
-            text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
-        }
-
-        .countdown {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            margin-bottom: 50px;
-        }
-
-        .time-unit {
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(5px);
-            border-radius: 15px;
-            padding: 30px 40px;
-            min-width: 150px;
-            border: 3px solid #ff0000;
-            box-shadow:
-                0 0 20px rgba(255, 0, 0, 0.7),
-                0 0 40px rgba(255, 0, 0, 0.4),
-                inset 0 0 20px rgba(255, 0, 0, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .time-unit:hover {
-            transform: translateY(-8px);
-            box-shadow:
-                0 0 30px rgba(255, 0, 0, 1),
-                0 0 60px rgba(255, 0, 0, 0.6),
-                inset 0 0 30px rgba(255, 0, 0, 0.3);
-        }
-
-        .time-value {
-            font-family: 'Orbitron', monospace;
-            font-size: 4.5rem;
-            font-weight: 900;
-            color: #ff0000;
-            display: block;
-            text-shadow:
-                0 0 10px rgba(255, 0, 0, 1),
-                0 0 20px rgba(255, 0, 0, 0.8),
-                0 0 30px rgba(255, 0, 0, 0.6);
-            line-height: 1;
-            letter-spacing: 3px;
-        }
-
-        .time-label {
-            font-family: 'Orbitron', monospace;
-            font-size: 0.9rem;
-            color: #ffcccc;
-            margin-top: 15px;
-            display: block;
-            font-weight: 400;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            text-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
-        }
-
-        .footer {
-            margin-top: 30px;
-            color: #ff0000;
-            font-size: 1.4rem;
-            font-style: italic;
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            text-shadow:
-                0 0 10px rgba(255, 0, 0, 0.8),
-                0 0 20px rgba(255, 0, 0, 0.6);
-            animation: footerPulse 2s ease-in-out infinite;
-        }
-
-        @keyframes footerPulse {
-
-            0%,
-            100% {
-                opacity: 0.8;
-                text-shadow:
-                    0 0 10px rgba(255, 0, 0, 0.8),
-                    0 0 20px rgba(255, 0, 0, 0.6);
-            }
-
-            50% {
-                opacity: 1;
-                text-shadow:
-                    0 0 15px rgba(255, 0, 0, 1),
-                    0 0 30px rgba(255, 0, 0, 0.8);
-            }
-        }
-
-        .finished {
-            font-size: 3.5rem;
-            color: #ff0000;
-            font-weight: 900;
-            text-shadow:
-                0 0 20px rgba(255, 0, 0, 1),
-                0 0 40px rgba(255, 0, 0, 0.8);
-            animation: celebrate 1s infinite;
-        }
-
-        @keyframes celebrate {
-
-            0%,
-            100% {
-                transform: scale(1);
-            }
-
-            50% {
+                opacity: 0.7;
                 transform: scale(1.1);
             }
         }
 
+        /* Noise/Grain Filter */
+        .noise-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 100;
+            pointer-events: none;
+            opacity: 0.05;
+            background: url('https://www.transparenttextures.com/patterns/60-lines.png');
+        }
+
+        /* Smoke/Fog Effect */
+        .fog-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -2;
+            pointer-events: none;
+            filter: blur(60px);
+            opacity: 0.4;
+        }
+
+        .fog-layer {
+            position: absolute;
+            width: 300%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(150, 150, 150, 0.2) 0%, transparent 50%);
+            animation: drift 40s linear infinite;
+        }
+
+        @keyframes drift {
+            from {
+                transform: translateX(-50%);
+            }
+
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        /* Parallax Silhouettes */
+        .parallax-silhouette {
+            position: fixed;
+            font-size: 10rem;
+            opacity: 0.03;
+            color: #fff;
+            filter: grayscale(1);
+            pointer-events: none;
+            z-index: -1;
+            user-select: none;
+        }
+
+        .handcuffs {
+            top: 10%;
+            left: 5%;
+            animation: floatSil 20s ease-in-out infinite alternate;
+        }
+
+        .whip {
+            bottom: 15%;
+            right: 5%;
+            animation: floatSil 25s ease-in-out infinite alternate-reverse;
+        }
+
+        .gag {
+            top: 40%;
+            right: 10%;
+            animation: floatSil 30s ease-in-out infinite alternate;
+        }
+
+        @keyframes floatSil {
+            from {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            to {
+                transform: translate(50px, 30px) rotate(15deg);
+            }
+        }
+
+        .container {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            width: 100%;
+            max-width: 1300px;
+            padding: 20px;
+            perspective: 1000px;
+        }
+
+        /* Dying Lightbulb H1 */
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4.5rem;
+            color: var(--neon-red);
+            text-shadow: 0 0 10px var(--neon-red), 0 0 20px var(--neon-red);
+            letter-spacing: 12px;
+            margin-bottom: 15px;
+            animation: dyingLightbulb 5s infinite;
+        }
+
+        @keyframes dyingLightbulb {
+
+            0%,
+            15%,
+            20%,
+            35%,
+            60%,
+            100% {
+                opacity: 1;
+                text-shadow: 0 0 10px var(--neon-red), 0 0 20px var(--neon-red);
+            }
+
+            16%,
+            19%,
+            36%,
+            59% {
+                opacity: 0.2;
+                text-shadow: none;
+            }
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            font-weight: 900;
+            letter-spacing: 5px;
+            color: #fff;
+            margin-bottom: 60px;
+            text-transform: uppercase;
+            filter: blur(0.3px);
+            text-shadow: 2px 2px 5px var(--neon-red);
+        }
+
+        /* Trio Container */
+        .trio {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 80px;
+            margin-bottom: 80px;
+        }
+
+        .img-box {
+            position: relative;
+            width: 280px;
+            height: 280px;
+        }
+
+        .img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /* Cat Animations */
+        .cat-box {
+            animation: catBreathing 4s ease-in-out infinite;
+        }
+
+        @keyframes catBreathing {
+
+            0%,
+            100% {
+                transform: scale(1);
+                filter: brightness(0.8);
+            }
+
+            50% {
+                transform: scale(1.08);
+                filter: brightness(1.2);
+            }
+        }
+
+        /* Eye Flicker - manually positioned overlay if needed, or filter-based flicker */
+        .cat-box::after {
+            content: '';
+            position: absolute;
+            top: 30%;
+            left: 35%;
+            width: 30%;
+            height: 10%;
+            background: transparent;
+            box-shadow: 0 0 30px 10px var(--neon-red);
+            border-radius: 50%;
+            opacity: 0;
+            animation: eyeFlicker 4s infinite;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        @keyframes eyeFlicker {
+
+            0%,
+            89%,
+            95%,
+            100% {
+                opacity: 0;
+            }
+
+            90%,
+            94% {
+                opacity: 0.6;
+            }
+        }
+
+        /* Gift Animations */
+        .gift-box {
+            animation: levitate 5s ease-in-out infinite alternate;
+            filter: drop-shadow(0 0 30px var(--neon-red));
+            position: relative;
+        }
+
+        .gift-box img {
+            filter: brightness(1.1);
+        }
+
+        .neon-question {
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            color: var(--neon-red);
+            text-shadow: 0 0 15px var(--neon-red), 0 0 30px var(--neon-red);
+            animation: neonFlicker 3s infinite;
+            z-index: 15;
+        }
+
+        @keyframes neonFlicker {
+
+            0%,
+            18%,
+            22%,
+            25%,
+            53%,
+            57%,
+            100% {
+                opacity: 1;
+                text-shadow: 0 0 15px var(--neon-red), 0 0 30px var(--neon-red);
+            }
+
+            19%,
+            21%,
+            23%,
+            24%,
+            54%,
+            56% {
+                opacity: 0.3;
+                text-shadow: none;
+            }
+        }
+
+        @keyframes levitate {
+            from {
+                transform: translateY(0);
+            }
+
+            to {
+                transform: translateY(-30px);
+            }
+        }
+
+        /* Mouse Animations */
+        .mouse-box {
+            animation: mouseTerror 0.04s infinite;
+        }
+
+        @keyframes mouseTerror {
+            0% {
+                transform: translate(1px, 2px) rotate(0deg);
+            }
+
+            20% {
+                transform: translate(-2px, -1px) rotate(1deg);
+            }
+
+            40% {
+                transform: translate(-3px, 0px) rotate(-1deg);
+            }
+
+            60% {
+                transform: translate(2px, 1px) rotate(0deg);
+            }
+
+            80% {
+                transform: translate(1px, -1px) rotate(1deg);
+            }
+
+            100% {
+                transform: translate(1px, 2px) rotate(0deg);
+            }
+        }
+
+        /* Countdown: Massive & Glitchy */
+        .timer-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .countdown {
+            display: flex;
+            gap: 25px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 10rem;
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        .glitch-item {
+            position: relative;
+            cursor: default;
+        }
+
+        /* RGB Split Glitch Logic */
+        .glitch-active .glitch-item::before,
+        .glitch-active .glitch-item::after {
+            content: attr(data-val);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .glitch-active .glitch-item::before {
+            color: var(--glitch-blue);
+            z-index: -1;
+            animation: glitch-rgb-1 0.4s infinite;
+            left: -3px;
+        }
+
+        .glitch-active .glitch-item::after {
+            color: var(--neon-red);
+            z-index: -2;
+            animation: glitch-rgb-2 0.4s reverse infinite;
+            left: 3px;
+        }
+
+        @keyframes glitch-rgb-1 {
+            0% {
+                transform: translate(0);
+            }
+
+            25% {
+                transform: translate(-5px, 2px);
+            }
+
+            50% {
+                transform: translate(3px, -4px);
+            }
+
+            75% {
+                transform: translate(-2px, 5px);
+            }
+
+            100% {
+                transform: translate(0);
+            }
+        }
+
+        @keyframes glitch-rgb-2 {
+            0% {
+                transform: translate(0);
+            }
+
+            25% {
+                transform: translate(5px, -2px);
+            }
+
+            50% {
+                transform: translate(-3px, 4px);
+            }
+
+            75% {
+                transform: translate(2px, -5px);
+            }
+
+            100% {
+                transform: translate(0);
+            }
+        }
+
+        .labels {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 5px;
+        }
+
+        .label-cell {
+            width: 180px;
+            text-align: center;
+        }
+
+        /* Footer: Deep Red Pulse */
+        .footer {
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: var(--deep-red);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            animation: footerBreath 4s ease-in-out infinite;
+            text-shadow: 0 0 10px rgba(139, 0, 0, 0.5);
+        }
+
+        @keyframes footerBreath {
+
+            0%,
+            100% {
+                color: var(--deep-red);
+                transform: scale(1);
+                text-shadow: 0 0 10px rgba(139, 0, 0, 0.5);
+            }
+
+            50% {
+                color: var(--neon-red);
+                transform: scale(1.05);
+                text-shadow: 0 0 30px var(--neon-red);
+            }
+        }
+
+        /* Mobile specific adjustments */
         @media (max-width: 768px) {
             h1 {
-                font-size: 2.5rem;
+                font-size: 2rem;
+                letter-spacing: 4px;
             }
 
             .subtitle {
-                font-size: 1.1rem;
-            }
-
-            .animal-img {
-                width: 120px;
-                height: 120px;
-            }
-
-            .animals {
-                gap: 40px;
-            }
-
-            .time-unit {
-                min-width: 110px;
-                padding: 25px 30px;
-            }
-
-            .time-value {
-                font-size: 3rem;
-            }
-
-            .time-label {
                 font-size: 0.8rem;
+                letter-spacing: 2px;
             }
 
-            .container {
-                padding: 40px 30px;
-            }
-
-            .countdown {
+            .trio {
                 gap: 20px;
             }
 
+            .img-box {
+                width: 100px;
+                height: 100px;
+            }
+
+            .countdown {
+                font-size: 3.5rem;
+                gap: 10px;
+            }
+
+            .label-cell {
+                width: auto;
+                font-size: 0.6rem;
+            }
+
             .footer {
-                font-size: 1.1rem;
+                font-size: 1rem;
+            }
+
+            .parallax-silhouette {
+                font-size: 5rem;
             }
         }
     </style>
 </head>
 
 <body>
+    <div class="noise-overlay"></div>
+    <div class="heartbeat-bg"></div>
+    <div class="fog-container">
+        <div class="fog-layer"></div>
+    </div>
+
+    <!-- Parallax Symbols -->
+    <div class="parallax-silhouette handcuffs">⛓️</div>
+    <div class="parallax-silhouette whip">🧨</div>
+    <div class="parallax-silhouette gag">🎭</div>
+
     <div class="container">
-
-        <div class="animals">
-            <img src="cat.png" alt="Drapieżny Kocur" class="animal-img cat" id="catImg">
-            <img src="mouse.png" alt="Wystraszanona Myszka" class="animal-img mouse" id="mouseImg">
-        </div>
-
-        <h1>ODLICZAJ DO POKUTY</h1>
-
+        <h1>ODLICZAJ DO NIESPODZIANKI</h1>
         <p class="subtitle">
-            Myszko, szykuj pupę. Kocur wraca po swoje bez litości.
+            MYSZKO, KOCUR IDZIE ROZPAKOWAĆ SWÓJ PREZENT. TWOJA LOJALNOŚĆ ZOSTANIE SPRAWDZONA.
         </p>
 
-        <div id="countdown" class="countdown">
-            <div class="time-unit">
-                <span id="hours" class="time-value">00</span>
-                <span class="time-label">Godzin</span>
+        <div class="trio">
+            <div class="img-box cat-box">
+                <img src="cat.png" alt="Cat">
             </div>
-            <div class="time-unit">
-                <span id="minutes" class="time-value">00</span>
-                <span class="time-label">Minut</span>
+            <div class="img-box gift-box">
+                <div class="neon-question">?</div>
+                <img src="gift.png" alt="Gift">
             </div>
-            <div class="time-unit">
-                <span id="seconds" class="time-value">00</span>
-                <span class="time-label">Sekund</span>
+            <div class="img-box mouse-box">
+                <img src="mouse.png" alt="Mouse">
+            </div>
+        </div>
+
+        <div class="timer-wrap">
+            <div id="c-down" class="countdown">
+                <div class="glitch-item" id="h-val" data-val="00">00</div>
+                <span>:</span>
+                <div class="glitch-item" id="m-val" data-val="00">00</div>
+                <span>:</span>
+                <div class="glitch-item" id="s-val" data-val="00">00</div>
+            </div>
+            <div class="labels">
+                <div class="label-cell">Hours</div>
+                <div class="label-cell">Minutes</div>
+                <div class="label-cell">Seconds</div>
             </div>
         </div>
 
         <div class="footer">
-            W środę o 16:00 Twój świat przestaje istnieć. 😈🔥
+            Sobota, 18:00 — Godzina, w której kocur przejmuje wszystko. 😈🎁🔥
         </div>
     </div>
 
-
     <script>
-        // Target date: January 21, 2026 at 16:00 (4:00 PM)
-        const targetDate = new Date('2026-01-21T16:00:00').getTime();
+        // Target: Jan 24, 2026, 18:00:00
+        const target = new Date('2026-01-24T18:00:00').getTime();
 
-        function updateCountdown() {
+        const hEl = document.getElementById('h-val');
+        const mEl = document.getElementById('m-val');
+        const sEl = document.getElementById('s-val');
+        const wrap = document.getElementById('c-down');
+
+        function update() {
             const now = new Date().getTime();
-            const distance = targetDate - now;
+            const d = target - now;
 
-            if (distance < 0) {
-                // Countdown finished
-                document.getElementById('countdown').innerHTML =
-                    '<div class="finished">💀 CZAS POKUTY NADSZEDŁ! 🔥</div>';
+            if (d <= 0) {
+                wrap.innerHTML = "TIME IS UP";
                 return;
             }
 
-            // Calculate hours, minutes and seconds
-            const hours = Math.floor(distance / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            const h = Math.floor(d / (1000 * 60 * 60));
+            const m = Math.floor((d % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((d % (1000 * 60)) / 1000);
 
-            // Update the display
-            document.getElementById('hours').textContent =
-                String(hours).padStart(2, '0');
-            document.getElementById('minutes').textContent =
-                String(minutes).padStart(2, '0');
-            document.getElementById('seconds').textContent =
-                String(seconds).padStart(2, '0');
+            const hS = String(h).padStart(2, '0');
+            const mS = String(m).padStart(2, '0');
+            const sS = String(s).padStart(2, '0');
+
+            hEl.innerText = hS;
+            hEl.setAttribute('data-val', hS);
+            mEl.innerText = mS;
+            mEl.setAttribute('data-val', mS);
+            sEl.innerText = sS;
+            sEl.setAttribute('data-val', sS);
         }
 
-        // Update countdown immediately
-        updateCountdown();
+        setInterval(update, 1000);
+        update();
 
-        // Update countdown every second
-        setInterval(updateCountdown, 1000);
-
+        // RGB Glitch Every 10 Seconds
+        setInterval(() => {
+            wrap.classList.add('glitch-active');
+            setTimeout(() => {
+                wrap.classList.remove('glitch-active');
+            }, 1500);
+        }, 10000);
     </script>
 </body>
 
